@@ -1,4 +1,4 @@
-name: Deployment (Docker Container)
+name: Deployment (Container)
 on:
   push:
     branches:
@@ -6,7 +6,7 @@ on:
       - dev
 env:
   CACHE_KEY: node-deps
-  MONGODB_DB_NAME: gha-practice
+  MONGODB_DB_NAME: gha-demo
 jobs:
   test:
     environment: testing
@@ -19,9 +19,9 @@ jobs:
       PORT: 8080
     steps:
       - name: Get Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
       - name: Cache dependencies
-        uses: actions/cache@v4
+        uses: actions/cache@v3
         with:
           path: ~/.npm
           key: ${{ env.CACHE_KEY }}-${{ hashFiles('**/package-lock.json') }}
