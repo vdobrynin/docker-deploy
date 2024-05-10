@@ -11,18 +11,21 @@ jobs:
   test:
     environment: testing
     runs-on: ubuntu-latest
-    container: 
-      image: node:16
-      # env:
+    # container:            if-not-running-in-container
+    #   image: node:16
+      # env:                for-extra
     env:
       MONGODB_CONNECTION_PROTOCOL: mongodb
-      MONGODB_CLUSTER_ADDRESS: mongodb
+      MONGODB_CLUSTER_ADDRESS: 127.0.0.1:27017
+      # MONGODB_CLUSTER_ADDRESS: mongodb    to-run-in-container
       MONGODB_USERNAME: root
       MONGODB_PASSWORD: example
       PORT: 8080
     services: 
       mongodb:
         image: mongo
+        ports:
+          - 27017:27017
         env: 
           MONGO_INITDB_ROOT_USERNAME: root
           MONGO_INITDB_ROOT_PASSWORD: example
