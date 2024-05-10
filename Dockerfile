@@ -1,4 +1,4 @@
-FROM node:20
+FROM node:16
 
 ENV MONGODB_CONNECTION_PROTOCOL mongodb+srv
 ENV MONGODB_DB_NAME gha-practice
